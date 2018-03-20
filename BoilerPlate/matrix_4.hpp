@@ -12,19 +12,21 @@ namespace Engine {
 
 	class matrix_4
 	{
-		//This struct 
-		struct array_2D
+		//This struct hides the structure of the matrix
+		/*struct array_2D
 		{
 			float mArray[4][4];
-		};
+		};*/
 
 	public:
+		//Constructors
 		matrix_4();
 		matrix_4(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float);
 		matrix_4(float[16]);
 		~matrix_4();
 
-		array_2D get_matrix();
+		//Public functions
+		float* get_matrix();
 		matrix_4 get_invert();
 		matrix_4 get_transpose();
 		void set_identity();
@@ -34,7 +36,8 @@ namespace Engine {
 		matrix_4 rotate_y(float);
 		matrix_4 rotate_z(float);
 
-		float& operator [] (const int);
+		//Operators to overload
+		//float& operator [] (const int);
 		friend std::ostream& operator<<(std::ostream&, const matrix_4&);
 		matrix_4& operator = (const matrix_4&);
 		matrix_4 operator + (const matrix_4&) const;
@@ -43,8 +46,8 @@ namespace Engine {
 		matrix_4 operator / (matrix_4&) const;
 
 	private:
-
-		array_2D mMatrix;
+		//Members
+		float mMatrix[16];
 	};
 }
 
