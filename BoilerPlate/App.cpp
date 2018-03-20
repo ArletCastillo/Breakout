@@ -6,10 +6,14 @@
 #include <GL/glew.h>
 #include <SDL2/SDL_opengl.h>
 
+#include "renderer.hpp"
+
 namespace Engine
 {
 	const float DESIRED_FRAME_RATE = 60.0f;
 	const float DESIRED_FRAME_TIME = 1.0f / DESIRED_FRAME_RATE;
+
+	renderer mRenderer= renderer();
 
 	App::App(const std::string& title, const int width, const int height)
 		: m_title(title)
@@ -35,6 +39,9 @@ namespace Engine
 			std::cerr << "Game INIT was not successful." << std::endl;
 			return;
 		}
+
+		mRenderer.get_program_id();
+		mRenderer.vertex_loader();
 
 		m_state = GameState::RUNNING;
 
@@ -67,7 +74,7 @@ namespace Engine
 
 		// Setup the viewport
 		//
-		SetupViewport();
+		//SetupViewport();
 
 		// Change game state
 		//
@@ -80,6 +87,9 @@ namespace Engine
 	{		
 		switch (keyBoardEvent.keysym.scancode)
 		{
+		case SDL_SCANCODE_Q: 
+			mRenderer.toggle_fill_or_line();
+			break;
 		default:			
 			SDL_Log("%S was pressed.", keyBoardEvent.keysym.scancode);
 			break;
@@ -126,13 +136,7 @@ namespace Engine
 	{
 		glClearColor(0.1f, 0.1f, 0.15f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
-
-		glBegin(GL_LINE_LOOP);
-		glVertex2f(50.0, 50.0);
-		glVertex2f(50.0, -50.0);
-		glVertex2f(-50.0, -50.0);
-		glVertex2f(-50.0, 50.0);
-		glEnd();
+		mRenderer.render();
 
 		SDL_GL_SwapWindow(m_mainWindow);
 	}
@@ -146,6 +150,11 @@ namespace Engine
 			std::cerr << "Failed to init SDL" << std::endl;
 			return false;
 		}
+
+		SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
+
+		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
+		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 2);
 
 		SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 		SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
@@ -206,6 +215,7 @@ namespace Engine
 
 	bool App::GlewInit()
 	{
+		glewExperimental = GL_TRUE; //Allows features to work 
 		GLenum err = glewInit();
 		if (GLEW_OK != err)
 		{
