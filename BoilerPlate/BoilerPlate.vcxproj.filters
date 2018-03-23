@@ -32,6 +32,20 @@
     <ClCompile Include="Vector_4.cpp">
       <Filter>Engine\Source files</Filter>
     </ClCompile>
+    <ClCompile Include="component.cpp">
+      <Filter>Engine\core</Filter>
+    </ClCompile>
+    <ClCompile Include="game_object.cpp">
+      <Filter>Engine\core</Filter>
+    </ClCompile>
+    <ClCompile Include="unique_id.cpp">
+      <Filter>Engine\core</Filter>
+    </ClCompile>
+    <ClCompile Include="sprite.cpp" />
+    <ClCompile Include="resource_manager.cpp" />
+    <ClCompile Include="game.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.hpp" />
@@ -65,8 +79,28 @@
     <ClInclude Include="Vector_4.hpp">
       <Filter>Engine\Header files</Filter>
     </ClInclude>
+    <ClInclude Include="i_update.hpp">
+      <Filter>Engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="game_object.hpp">
+      <Filter>Engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="component.hpp">
+      <Filter>Engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="i_render.hpp">
+      <Filter>Engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="unique_id.hpp">
+      <Filter>Engine\core</Filter>
+    </ClInclude>
     <ClInclude Include="vertex.hpp">
       <Filter>Engine\Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="sprite.hpp" />
+    <ClInclude Include="resource_manager.hpp" />
+    <ClInclude Include="game.hpp">
+      <Filter>game</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -78,6 +112,12 @@
     </Filter>
     <Filter Include="Engine\Header files">
       <UniqueIdentifier>{da8cc683-e66e-46b9-be58-7d0e16e23f76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\core">
+      <UniqueIdentifier>{1c41bd96-7291-4a07-8e68-8140ae2eb9a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game">
+      <UniqueIdentifier>{29a552fa-ace6-41bc-acd2-16b90153ea4b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

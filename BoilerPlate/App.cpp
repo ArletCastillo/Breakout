@@ -13,8 +13,6 @@ namespace Engine
 	const float DESIRED_FRAME_RATE = 60.0f;
 	const float DESIRED_FRAME_TIME = 1.0f / DESIRED_FRAME_RATE;
 
-	renderer mRenderer= renderer();
-
 	App::App(const std::string& title, const int width, const int height)
 		: m_title(title)
 		, m_width(width)
@@ -40,10 +38,9 @@ namespace Engine
 			return;
 		}
 
-		mRenderer.get_program_id();
-		mRenderer.vertex_loader();
-
 		m_state = GameState::RUNNING;
+
+		mGame.execute(m_height, m_width);
 
 		SDL_Event event;
 		while (m_state == GameState::RUNNING)
@@ -88,7 +85,7 @@ namespace Engine
 		switch (keyBoardEvent.keysym.scancode)
 		{
 		case SDL_SCANCODE_Q: 
-			mRenderer.toggle_fill_or_line();
+			mGame.toggle_drawing_mode();
 			break;
 		default:			
 			SDL_Log("%S was pressed.", keyBoardEvent.keysym.scancode);
@@ -136,8 +133,7 @@ namespace Engine
 	{
 		glClearColor(0.1f, 0.1f, 0.15f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
-		mRenderer.render();
-
+		mGame.render();
 		SDL_GL_SwapWindow(m_mainWindow);
 	}
 
