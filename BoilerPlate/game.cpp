@@ -2,7 +2,6 @@
 namespace game {
 	game::game()
 	{
-		//mRenderManager = Engine::renderer();
 	}
 
 	game::~game()
