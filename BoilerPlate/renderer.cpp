@@ -4,7 +4,7 @@
 namespace Engine
 {
 	//TO DO: move this out!!
-	vertex vertices[] = {
+	Engine::math::vertex vertices[] = {
 	// first triangle
 
 	{ 0.03f,  0.03f, 0.0f,  1.0f, 0.0f, 0.0f, 1.0f,  1.0f, 1.0f }, // top right

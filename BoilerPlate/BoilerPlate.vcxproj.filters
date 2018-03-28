@@ -50,6 +50,7 @@
     <ClCompile Include="sprite.cpp">
       <Filter>Engine\utilities</Filter>
     </ClCompile>
+    <ClCompile Include="ball.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.hpp" />
@@ -110,6 +111,7 @@
     <ClInclude Include="sprite.hpp">
       <Filter>Engine\utilities</Filter>
     </ClInclude>
+    <ClInclude Include="ball.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Engine">

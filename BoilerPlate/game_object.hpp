@@ -9,6 +9,8 @@
 #include "i_update.hpp"
 #include "unique_id.hpp"
 
+#include "vertex.hpp"
+
 namespace Engine
 {
 	namespace core
@@ -53,6 +55,8 @@ namespace Engine
 			}
 		protected:
 			//members
+			int mIndices[80];
+			Engine::math::vertex vertices[80];
 			std::vector<component*>	mComponents;
 			std::vector<game_object*> mChildren;
 			game_object* mParent;

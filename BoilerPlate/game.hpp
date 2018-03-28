@@ -16,7 +16,5 @@ namespace game
 
 	private:
 		Engine::renderer mRenderManager;
-		Engine::core::game_object ball;
-		Engine::core::game_object brick;
 	};
 }
