@@ -12,7 +12,7 @@ namespace Engine
 	{ -0.03f,  0.03f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f,  0.0f, 1.0f }, // top left
 
 	// second triangle
-	{ -0.03f, -0.03f, 0.0f,  1.0f, 0.0f, 0.0f, 1.0f,  0.0f, 0.0f } // bottom left
+	{ -0.03f, -0.03f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f,  0.0f, 0.0f } // bottom left
 	};
 
 	int indices[] = {
@@ -70,7 +70,7 @@ namespace Engine
 	void renderer::init_render()
 	{
 		mProgramID = mShaderManager.load_shaders("vertex.glsl", "frag.glsl");
-		mTexture = texture("assets/block.png");
+		mTexture = texture("assets/paddle.png");
 	}
 
 	void renderer::render()
@@ -81,11 +81,11 @@ namespace Engine
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, mTexture.get_texture());
 
-		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-		glEnable(GL_BLEND);
-
 		glBindVertexArray(mVertexArrayObject);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mElementsBufferObject);
+
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		glEnable(GL_BLEND);
 
 		glDrawElements(GL_TRIANGLES, sizeof(indices), GL_UNSIGNED_INT, (void*)0);
 	}

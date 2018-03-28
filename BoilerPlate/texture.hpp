@@ -17,8 +17,8 @@ namespace Engine
 		~texture();
 
 		GLuint get_texture();
-
 		GLuint load_texture(const char *);
+		void create_texture(const char *, int, int, unsigned char*);
 	private:
 
 		GLuint mTexture;
