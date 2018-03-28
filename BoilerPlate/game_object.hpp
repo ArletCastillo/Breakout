@@ -10,6 +10,8 @@
 #include "unique_id.hpp"
 
 #include "vertex.hpp"
+#include "texture.hpp"
+
 
 namespace Engine
 {
@@ -35,6 +37,8 @@ namespace Engine
 			std::vector<component*>get_components() const { return mComponents; }
 			std::vector<game_object*> get_children() const { return mChildren; }
 			game_object* get_parent() const { return mParent; }
+			Engine::math::vertex * getVertices();
+			int * getIndices();
 
 			template<typename T>
 			T* get_component()
@@ -55,11 +59,12 @@ namespace Engine
 			}
 		protected:
 			//members
-			int mIndices[80];
-			Engine::math::vertex vertices[80];
+			int mIndices[6];
+			Engine::math::vertex mVertices[4];
 			std::vector<component*>	mComponents;
 			std::vector<game_object*> mChildren;
 			game_object* mParent;
+			Engine::texture mTexturePath;
 		};
 	}
 }

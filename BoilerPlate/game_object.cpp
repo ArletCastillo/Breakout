@@ -92,5 +92,17 @@ namespace Engine
 				}
 			}
 		}
+
+
+		Engine::math::vertex * game_object::getVertices()
+		{
+			return mVertices;
+		}
+
+
+		int * game_object::getIndices()
+		{
+			return mIndices;
+		}
 	}
 }
