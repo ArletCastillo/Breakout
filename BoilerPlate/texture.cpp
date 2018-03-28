@@ -43,8 +43,7 @@ namespace Engine
 		unsigned char *data = stbi_load(pTexturePath, &width, &height, &nrChannels, 0);
 		if (data)
 		{
-			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
-			glGenerateMipmap(GL_TEXTURE_2D);
+			create_texture(pTexturePath, width, height, data);
 		}
 		else
 		{
@@ -54,5 +53,19 @@ namespace Engine
 		stbi_image_free(data);
 
 		return texture;
+	}
+
+	void texture::create_texture(const char *pTexturePath, int pWidth, int pHeight, unsigned char *data)
+	{
+		if (pTexturePath == "assets/block.png" || pTexturePath == "assets/block_solid.png")
+		{
+			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, pWidth, pHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+			glGenerateMipmap(GL_TEXTURE_2D);
+		}
+		else
+		{
+			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, pWidth, pHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+			glGenerateMipmap(GL_TEXTURE_2D);
+		}
 	}
 }

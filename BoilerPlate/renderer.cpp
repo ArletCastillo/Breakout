@@ -4,13 +4,15 @@
 namespace Engine
 {
 	//TO DO: move this out!!
-	vertex vertices[] = {
-		// first triangle
-	{ 0.5f,  0.5f, 0.0f, 1.0f, 1.0f }, // top right
-	{ 0.5f, -0.5f, 0.0f, 1.0f, 0.0f },  // bottom right
-	{ -0.5f,  0.5f, 0.0f, 0.0f, 1.0f }, // top left
+	Engine::math::vertex vertices[] = {
+	// first triangle
+
+	{ 0.03f,  0.03f, 0.0f,  1.0f, 0.0f, 0.0f, 1.0f,  1.0f, 1.0f }, // top right
+	{ 0.03f, -0.03f, 0.0f,  1.0f, 0.0f, 0.0f, 1.0f,  1.0f, 0.0f },  // bottom right
+	{ -0.03f,  0.03f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f,  0.0f, 1.0f }, // top left
+
 	// second triangle
-	{ -0.5f, -0.5f, 0.0f, 0.0f, 0.0f } // bottom left
+	{ -0.03f, -0.03f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f,  0.0f, 0.0f } // bottom left
 	};
 
 	int indices[] = {
@@ -68,7 +70,7 @@ namespace Engine
 	void renderer::init_render()
 	{
 		mProgramID = mShaderManager.load_shaders("vertex.glsl", "frag.glsl");
-		mTexture = texture("test.png");
+		mTexture = texture("assets/paddle.png");
 	}
 
 	void renderer::render()
@@ -81,6 +83,9 @@ namespace Engine
 
 		glBindVertexArray(mVertexArrayObject);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mElementsBufferObject);
+
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		glEnable(GL_BLEND);
 
 		glDrawElements(GL_TRIANGLES, sizeof(indices), GL_UNSIGNED_INT, (void*)0);
 	}
@@ -132,17 +137,27 @@ namespace Engine
 			3,                  // size
 			GL_FLOAT,           // type
 			GL_FALSE,           // normalized?
-			5 * sizeof(float),  // stride
+			9 * sizeof(float),  // stride
 			(void*)0            // array buffer offset
 		);
 		glEnableVertexAttribArray(0);
 		glVertexAttribPointer(
 			1,                  // attribute 0. No particular reason for 0, but must match the layout in the shader.
+			4,                  // size
+			GL_FLOAT,           // type
+			GL_FALSE,           // normalized?
+			9 * sizeof(float),  // stride
+			(void*)(3 * sizeof(float))          // array buffer offset
+		);
+		glEnableVertexAttribArray(1);
+		glVertexAttribPointer(
+			2,                  // attribute 0. No particular reason for 0, but must match the layout in the shader.
 			2,                  // size
 			GL_FLOAT,           // type
 			GL_FALSE,           // normalized?
-			5 * sizeof(float),  // stride
-			(void*)(3 * sizeof(float))          // array buffer offset
+			9 * sizeof(float),  // stride
+			(void*)(7 * sizeof(float))          // array buffer offset
 		);
+		glEnableVertexAttribArray(2);
 	}
 }

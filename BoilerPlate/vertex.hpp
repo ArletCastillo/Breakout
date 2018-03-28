@@ -3,10 +3,15 @@
 #ifndef _VERTEX_HPP
 #define _VERTEX_HPP
 
-struct vertex
+namespace Engine
 {
-	float mCoordinates[5];
-};
-
+	namespace math 
+	{
+		struct vertex
+		{
+			float mCoordinates[9];
+		};
+	}
+}
 #endif // !_VERTEX_HPP
 
