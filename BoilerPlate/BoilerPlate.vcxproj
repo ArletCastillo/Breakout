@@ -196,6 +196,9 @@ copy /Y "$(SolutionDir)\Externals\SDL2-2.0.4\lib\x64\SDL2.dll" "$(TargetDir)SDL2
     <ClInclude Include="App.hpp" />
     <ClInclude Include="ball.hpp" />
     <ClInclude Include="component.hpp" />
+    <ClInclude Include="components_includes.hpp" />
+    <ClInclude Include="c_object_model_matrix.hpp" />
+    <ClInclude Include="c_object_texture.hpp" />
     <ClInclude Include="error_manager.hpp" />
     <ClInclude Include="game.hpp" />
     <ClInclude Include="game_object.hpp" />
@@ -203,6 +206,7 @@ copy /Y "$(SolutionDir)\Externals\SDL2-2.0.4\lib\x64\SDL2.dll" "$(TargetDir)SDL2
     <ClInclude Include="i_update.hpp" />
     <ClInclude Include="Math_Utilities.hpp" />
     <ClInclude Include="matrix_4.hpp" />
+    <ClInclude Include="c_object_vertices.hpp" />
     <ClInclude Include="renderer.hpp" />
     <ClInclude Include="resource_manager.hpp" />
     <ClInclude Include="SDLEvent.hpp" />

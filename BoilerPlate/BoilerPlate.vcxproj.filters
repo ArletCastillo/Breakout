@@ -112,6 +112,10 @@
       <Filter>Engine\utilities</Filter>
     </ClInclude>
     <ClInclude Include="ball.hpp" />
+    <ClInclude Include="c_object_vertices.hpp" />
+    <ClInclude Include="c_object_texture.hpp" />
+    <ClInclude Include="c_object_model_matrix.hpp" />
+    <ClInclude Include="components_includes.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Engine">

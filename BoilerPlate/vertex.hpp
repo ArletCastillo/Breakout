@@ -1,4 +1,5 @@
 #pragma once
+#include "component.hpp"
 
 #ifndef _VERTEX_HPP
 #define _VERTEX_HPP

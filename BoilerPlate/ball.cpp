@@ -14,5 +14,4 @@ game::ball::ball()
 		1, 3, 2
 	};
 
-	mTexturePath = Engine::texture("assets/ball.png");
 }

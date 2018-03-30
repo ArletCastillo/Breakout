@@ -59,12 +59,10 @@ namespace Engine
 			}
 		protected:
 			//members
-			int mIndices[6];
-			Engine::math::vertex mVertices[4];
+			bool mUsesAlpha;
 			std::vector<component*>	mComponents;
 			std::vector<game_object*> mChildren;
 			game_object* mParent;
-			Engine::texture mTexturePath;
 		};
 	}
 }

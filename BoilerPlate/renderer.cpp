@@ -4,15 +4,15 @@
 namespace Engine
 {
 	//TO DO: move this out!!
-	Engine::math::vertex vertices[] = {
+	float vertices[] = {
 	// first triangle
 
-	{ 0.03f,  0.03f, 0.0f,  1.0f, 0.0f, 0.0f, 1.0f,  1.0f, 1.0f }, // top right
-	{ 0.03f, -0.03f, 0.0f,  1.0f, 0.0f, 0.0f, 1.0f,  1.0f, 0.0f },  // bottom right
-	{ -0.03f,  0.03f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f,  0.0f, 1.0f }, // top left
+	 0.03f,  0.03f, 0.0f,  1.0f, 0.0f, 0.0f, 1.0f,  1.0f, 1.0f , // top right
+	 0.03f, -0.03f, 0.0f,  1.0f, 0.0f, 0.0f, 1.0f,  1.0f, 0.0f ,  // bottom right
+	 -0.03f,  0.03f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f,  0.0f, 1.0f , // top left
 
 	// second triangle
-	{ -0.03f, -0.03f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f,  0.0f, 0.0f } // bottom left
+	 -0.03f, -0.03f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f,  0.0f, 0.0f  // bottom left
 	};
 
 	int indices[] = {
