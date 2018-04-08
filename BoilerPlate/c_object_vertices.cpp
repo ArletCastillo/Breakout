@@ -9,7 +9,7 @@ c_object_vertices::c_object_vertices(std::string pName)
 	Engine::core::component::component(pName);
 }
 
-std::vector<vertex> c_object_vertices::get_vertices()
+std::vector<Engine::math::vertex> c_object_vertices::get_vertices()
 {
 	return mVertices;
 }

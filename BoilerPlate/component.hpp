@@ -26,9 +26,9 @@ namespace Engine
 			game_object* get_owner() const { return mOwner; }
 			std::string get_name() const { return mName; }
 
-			virtual std::vector<vertex> get_vertices();
+			virtual std::vector<Engine::math::vertex> get_vertices();
 			virtual std::vector<int> get_indices();
-			virtual texture get_texture();
+			virtual Engine::utilities::texture get_texture();
 
 		protected:
 			//members

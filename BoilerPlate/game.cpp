@@ -1,9 +1,11 @@
 #include "game.hpp"
-namespace game {
+
+namespace game 
+{
 	game::game()
 	{
 		hola = ball();
-		mRenderManager = Engine::renderer::renderer(hola.get_components().at(0)->get_vertices(), hola.get_components().at(0)->get_indices());
+		mRenderManager = Engine::utilities::renderer::renderer(hola.get_components().at(0)->get_vertices(), hola.get_components().at(0)->get_indices());
 	}
 
 	game::~game()
@@ -23,6 +25,7 @@ namespace game {
 	{
 		mRenderManager.render();
 	}
+
 	void game::toggle_drawing_mode()
 	{
 		mRenderManager.toggle_fill_or_line();

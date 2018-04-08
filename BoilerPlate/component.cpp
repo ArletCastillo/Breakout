@@ -21,9 +21,9 @@ namespace Engine
 			i_update::update(pDeltaTime);
 		}
 
-		std::vector<vertex> component::get_vertices()
+		std::vector<Engine::math::vertex> component::get_vertices()
 		{
-			return std::vector<vertex>();
+			return std::vector<Engine::math::vertex>();
 		}
 
 		std::vector<int> component::get_indices()
@@ -31,7 +31,7 @@ namespace Engine
 			return std::vector<int>();
 		}
 
-		texture component::get_texture()
+		Engine::utilities::texture component::get_texture()
 		{
 			return NULL;
 		}

@@ -1,11 +1,19 @@
 #pragma once
+
+#ifndef _C_OBJECT_MODEL_MATRIX_HPP
+#define _C_OBJECT_MODEL_MATRIX_HPP
+
 #include "component.hpp"
 #include "matrix_4.hpp"
 
 struct c_object_model_matrix : Engine::core::component
 {
-public:
+	public:
+		//constructor
+		c_object_model_matrix(std::string);
 
-	c_object_model_matrix(std::string);
-	Engine::matrix_4 mModelMatrix;
+		//member
+		Engine::math::matrix_4 mModelMatrix;
 };
+
+#endif // !_C_OBJECT_MODEL_MATRIX_HPP
