@@ -51,6 +51,9 @@
       <Filter>Engine\utilities</Filter>
     </ClCompile>
     <ClCompile Include="ball.cpp" />
+    <ClCompile Include="c_object_vertices.cpp" />
+    <ClCompile Include="c_object_texture.cpp" />
+    <ClCompile Include="c_object_model_matrix.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.hpp" />

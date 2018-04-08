@@ -1,15 +1,15 @@
 #pragma once
 #include "component.hpp"
-#include "vertex.hpp"
-
-const int MAXIMUM_VERTEX_SIZE = 4;
-const int MAXIMUM_INDEX_SIZE = 6;
 
 struct c_object_vertices : Engine::core::component
 {
 public:
+	c_object_vertices();
+	c_object_vertices(std::string);
+	std::vector<vertex> get_vertices() override;
+	std::vector<int> get_indices() override;
 
-	Engine::math::vertex mVertices[MAXIMUM_VERTEX_SIZE];
-	int mIndices[MAXIMUM_INDEX_SIZE];
+	std::vector<vertex> mVertices;
+	std::vector<int> mIndices;
 };
 

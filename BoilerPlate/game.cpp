@@ -2,6 +2,8 @@
 namespace game {
 	game::game()
 	{
+		hola = ball();
+		mRenderManager = Engine::renderer::renderer(hola.get_components().at(0)->get_vertices(), hola.get_components().at(0)->get_indices());
 	}
 
 	game::~game()
@@ -12,7 +14,8 @@ namespace game {
 
 	void game::execute(int pFrameHeight, int pFrameWidth)
 	{
-		mRenderManager.init_render();
+		hola.assign_texture();
+		mRenderManager.init_render(hola.get_components()[1]->get_texture());
 		mRenderManager.vertex_loader(pFrameHeight, pFrameWidth);
 	}
 

@@ -14,13 +14,13 @@ namespace Engine
 
 		game_object::~game_object()
 		{
-			// Delete all attached components
-			//
-			while (!mComponents.empty()) delete mComponents.back(), mComponents.pop_back();
+			//// Delete all attached components
+			////
+			//while (!mComponents.empty()) delete mComponents.back(), mComponents.pop_back();
 
-			// Delete all attached children
-			//
-			while (!mChildren.empty()) delete mChildren.back(), mChildren.pop_back();
+			//// Delete all attached children
+			////
+			//while (!mChildren.empty()) delete mChildren.back(), mChildren.pop_back();
 		}
 
 		void game_object::attach_component(component* pComponent)
@@ -91,6 +91,14 @@ namespace Engine
 					(*child)->render();
 				}
 			}
+		}
+
+		void game_object::fill_vertices_info()
+		{
+		}
+
+		void game_object::assign_texture()
+		{
 		}
 
 	}

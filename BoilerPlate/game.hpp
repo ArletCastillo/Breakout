@@ -1,6 +1,6 @@
 #pragma once
 #include "renderer.hpp"
-#include "game_object.hpp"
+#include "ball.hpp"
 
 namespace game 
 {
@@ -16,5 +16,6 @@ namespace game
 
 	private:
 		Engine::renderer mRenderManager;
+		ball hola;
 	};
 }

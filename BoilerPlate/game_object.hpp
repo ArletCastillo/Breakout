@@ -9,8 +9,7 @@
 #include "i_update.hpp"
 #include "unique_id.hpp"
 
-#include "vertex.hpp"
-#include "texture.hpp"
+#include "components_includes.hpp"
 
 
 namespace Engine
@@ -32,31 +31,15 @@ namespace Engine
 			void remove_child(game_object*);
 			void update(double pDeltaTime) override;
 			void render() override;
+			virtual void fill_vertices_info();
+			virtual void assign_texture();
 
 			//getter functions
 			std::vector<component*>get_components() const { return mComponents; }
 			std::vector<game_object*> get_children() const { return mChildren; }
 			game_object* get_parent() const { return mParent; }
-			Engine::math::vertex * getVertices();
-			int * getIndices();
-
-			template<typename T>
-			T* get_component()
-			{
-				if (mComponents.size() == 0) return nullptr;
-
-				std::vector<component*>::iterator comp = mComponents.begin();
-				for (; comp != mComponents.end(); ++comp)
-				{
-					T* theComponent = dynamic_cast<T*>(*comp);
-					if (theComponent)
-					{
-						return theComponent;
-					}
-				}
-
-				return nullptr;
-			}
+			
+			
 		protected:
 			//members
 			bool mUsesAlpha;

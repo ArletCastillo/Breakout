@@ -1,35 +1,33 @@
 #include "renderer.hpp"
-#include "vertex.hpp"
 
 namespace Engine
 {
-	//TO DO: move this out!!
-	float vertices[] = {
-	// first triangle
-
-	 0.03f,  0.03f, 0.0f,  1.0f, 0.0f, 0.0f, 1.0f,  1.0f, 1.0f , // top right
-	 0.03f, -0.03f, 0.0f,  1.0f, 0.0f, 0.0f, 1.0f,  1.0f, 0.0f ,  // bottom right
-	 -0.03f,  0.03f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f,  0.0f, 1.0f , // top left
-
-	// second triangle
-	 -0.03f, -0.03f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f,  0.0f, 0.0f  // bottom left
-	};
-
-	int indices[] = {
-		0, 1, 2,
-		1, 3, 2 };
-
 	renderer::renderer()
 	{
+
+	}
+
+	renderer::renderer(std::vector<vertex> pObjectVertices, std::vector<int> pObjectIndices)
+	{
 		fillOrLineDrawing = true;
+
+		for (int i = 0; i < pObjectVertices.size(); i++)
+		{
+			mGameObjectVertices[i] = pObjectVertices[i];
+		}
+
+		for (int i = 0; i < pObjectIndices.size(); i++)
+		{
+			mGameObjectIndices[i] = pObjectIndices[i];
+		}
 	}
 
 
 	renderer::~renderer()
 	{
-		glDeleteBuffers(1, &mVertexBufferObject);
+		/*glDeleteBuffers(1, &mVertexBufferObject);
 		glDeleteBuffers(1, &mElementsBufferObject);
-		glDeleteVertexArrays(1, &mVertexArrayObject);
+		glDeleteVertexArrays(1, &mVertexArrayObject);*/
 	}
 
 	void renderer::vertex_loader(int pFrameHeight, int pFrameWidth)
@@ -57,20 +55,10 @@ namespace Engine
 
 	}
 
-
-	//Implemented function but not used
-	/*void renderer::textures_loader(const char* pTextureFiles[])
-	{
-		for (int i = 0; i < sizeof(pTextureFiles); i++)
-		{
-			mTextures[i] = texture(pTextureFiles[i]);
-		}
-	}*/
-
-	void renderer::init_render()
+	void renderer::init_render(Engine::texture pObjectTexture)
 	{
 		mProgramID = mShaderManager.load_shaders("vertex.glsl", "frag.glsl");
-		mTexture = texture("assets/paddle.png");
+		mGameObjectTexture = pObjectTexture;
 	}
 
 	void renderer::render()
@@ -79,7 +67,7 @@ namespace Engine
 		glUseProgram(mProgramID);
 
 		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D, mTexture.get_texture());
+		glBindTexture(GL_TEXTURE_2D, mGameObjectTexture.get_texture());
 
 		glBindVertexArray(mVertexArrayObject);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mElementsBufferObject);
@@ -87,7 +75,7 @@ namespace Engine
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		glEnable(GL_BLEND);
 
-		glDrawElements(GL_TRIANGLES, sizeof(indices), GL_UNSIGNED_INT, (void*)0);
+		glDrawElements(GL_TRIANGLES, sizeof(mGameObjectIndices), GL_UNSIGNED_INT, (void*)0);
 	}
 
 	void renderer::toggle_fill_or_line()
@@ -122,11 +110,11 @@ namespace Engine
 		glBindVertexArray(mVertexArrayObject);
 
 		glBindBuffer(GL_ARRAY_BUFFER, mVertexBufferObject);
-		glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(mGameObjectVertices), mGameObjectVertices, GL_STATIC_DRAW);
 
 
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mElementsBufferObject);
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(mGameObjectIndices), mGameObjectIndices, GL_STATIC_DRAW);
 	}
 
 

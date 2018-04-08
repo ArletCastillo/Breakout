@@ -6,19 +6,22 @@
 #include "shaders_utilities.hpp"
 #include "texture.hpp"
 #include <vector>
+#include "vertex.hpp"
+#include "components_includes.hpp"
 
 namespace Engine
 {
-	const int MAXIMUM_TEXTURES = 16;
+	const int MAX_VERTICES= 4;
+	const int MAX_INDICES = 6;
 
 	class renderer
 	{
 	public:
 		renderer();
+		renderer(std::vector<vertex>, std::vector<int>);
 		~renderer();
 		void vertex_loader(int, int);
-		//void textures_loader(const char* pTextureFiles[]);
-		void init_render();
+		void init_render(Engine::texture);
 		void render();
 		void toggle_fill_or_line();
 		void objects_generator();
@@ -30,13 +33,15 @@ namespace Engine
 
 		//Public attributes
 		shaders_utilities mShaderManager;
-		texture mTexture;
 
 	private:
 		GLuint mVertexArrayObject; //VAO
 		GLuint mVertexBufferObject; //VBO
 		GLuint mElementsBufferObject; //EBO
 		GLuint mProgramID;
+		vertex mGameObjectVertices[MAX_VERTICES];
+		int mGameObjectIndices[MAX_INDICES];
+		texture mGameObjectTexture;
 	};
 }
 
