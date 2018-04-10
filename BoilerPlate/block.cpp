@@ -5,6 +5,7 @@ namespace game
 	block::block()
 	{
 		fill_vertices_info();
+		mId = 2;
 	}
 
 	void block::fill_vertices_info()

@@ -40,7 +40,7 @@ namespace Engine
 
 		m_state = GameState::RUNNING;
 
-		mGame.execute(m_height, m_width);
+		mGame.execute();
 
 		SDL_Event event;
 		while (m_state == GameState::RUNNING)

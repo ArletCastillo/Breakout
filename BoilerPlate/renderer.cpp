@@ -6,23 +6,13 @@ namespace Engine
 	{
 		renderer::renderer()
 		{
-
+			fillOrLineDrawing = true;
 		}
 
-		Engine::utilities::renderer::renderer(std::vector<Engine::math::vertex> pObjectVertices, std::vector<int> pObjectIndices)
+		/*Engine::utilities::renderer::renderer(std::vector<Engine::math::vertex> pObjectVertices, std::vector<int> pObjectIndices)
 		{
 			fillOrLineDrawing = true;
-
-			for (int i = 0; i < pObjectVertices.size(); i++)
-			{
-				mGameObjectVertices[i] = pObjectVertices[i];
-			}
-
-			for (int i = 0; i < pObjectIndices.size(); i++)
-			{
-				mGameObjectIndices[i] = pObjectIndices[i];
-			}
-		}
+		}*/
 
 
 		renderer::~renderer()
@@ -32,7 +22,7 @@ namespace Engine
 			glDeleteVertexArrays(1, &mVertexArrayObject);*/
 		}
 
-		void renderer::vertex_loader(int pFrameHeight, int pFrameWidth)
+		void renderer::vertex_loader()
 		{
 			objects_generator();
 
@@ -52,24 +42,30 @@ namespace Engine
 
 			glUniform1i(glGetUniformLocation(mProgramID, "texture1"), 0);
 
-			float resolution[] = { static_cast<float>(pFrameWidth), static_cast<float>(pFrameHeight) };
-			glUniform2fv(glGetUniformLocation(mProgramID, "resolution"), 1, resolution);
+			/*float resolution[] = { static_cast<float>(pFrameWidth), static_cast<float>(pFrameHeight) };
+			glUniform2fv(glGetUniformLocation(mProgramID, "resolution"), 1, resolution);*/
 
 		}
 
-		void renderer::init_render(texture pObjectTexture)
+		void renderer::init_render()
 		{
 			mProgramID = mShaderManager.load_shaders("vertex.glsl", "frag.glsl");
-			mGameObjectTexture = pObjectTexture;
+			mGameObjectTextures.push_back(texture("assets/block.png"));
+			mGameObjectTextures.push_back(texture("assets/ball.png"));
+			mGameObjectTextures.push_back(texture("assets/paddle.png"));
+			mGameObjectTextures.push_back(texture("assets/block_solid.png"));
 		}
 
-		void renderer::render()
+		void renderer::render(Engine::core::game_object pObject)
 		{
+			fill_vertices_info(pObject.get_components()[0]->get_vertices(), pObject.get_components()[0]->get_indices());
+
+			vertex_loader();
+
 			//Use the program
 			glUseProgram(mProgramID);
 
-			glActiveTexture(GL_TEXTURE0);
-			glBindTexture(GL_TEXTURE_2D, mGameObjectTexture.get_texture());
+			select_texture(pObject);
 
 			glBindVertexArray(mVertexArrayObject);
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mElementsBufferObject);
@@ -94,6 +90,18 @@ namespace Engine
 			}
 		}
 
+		void renderer::fill_vertices_info(std::vector<Engine::math::vertex> pObjectVertices, std::vector<int> pObjectIndices)
+		{
+			for (int i = 0; i < pObjectVertices.size(); i++)
+			{
+				mGameObjectVertices[i] = pObjectVertices[i];
+			}
+
+			for (int i = 0; i < pObjectIndices.size(); i++)
+			{
+				mGameObjectIndices[i] = pObjectIndices[i];
+			}
+		}
 
 		void renderer::objects_generator()
 		{
@@ -149,6 +157,27 @@ namespace Engine
 				(void*)(7 * sizeof(float))          // array buffer offset
 			);
 			glEnableVertexAttribArray(2);
+		}
+
+		void renderer::select_texture(Engine::core::game_object pObject)
+		{
+			switch (pObject.mId)
+			{
+			case 1:
+			{
+				glActiveTexture(GL_TEXTURE0);
+				glBindTexture(GL_TEXTURE_2D, mGameObjectTextures[TEXTURE_INDEX_BALL].get_texture());
+				break;
+			}
+			case 2:
+			{
+				glActiveTexture(GL_TEXTURE0);
+				glBindTexture(GL_TEXTURE_2D, mGameObjectTextures[TEXTURE_INDEX_BLOCK].get_texture());
+				break;
+			}
+			default:
+				break;
+			}
 		}
 	}
 }

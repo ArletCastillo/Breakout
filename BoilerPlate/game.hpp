@@ -14,17 +14,17 @@ namespace game
 	public:
 		//constructor ~ destructor
 		game();
+		game(int, int);
 		~game();
 
 		//functions
-		void execute(int, int);
+		void execute();
 		void render();
 		void toggle_drawing_mode();
 
 	private:
 		//members
 		Engine::utilities::renderer mRenderManager;
-		Engine::utilities::renderer mRenderManager2;
 		ball hola;
 		block hello;
 	};

@@ -10,6 +10,7 @@ namespace Engine
 	{
 		game_object::game_object()
 			: mParent(nullptr)
+			
 		{}
 
 		game_object::~game_object()
