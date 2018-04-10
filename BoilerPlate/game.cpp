@@ -9,6 +9,13 @@ namespace game
 		mRenderManager = Engine::utilities::renderer();
 	}
 
+	game::game(int pHeight, int pWidth)
+	{
+		hola = ball();
+		hello = block();
+		mRenderManager = Engine::utilities::renderer(pHeight, pWidth);
+	}
+
 	game::~game()
 	{
 		mRenderManager.~renderer();
@@ -17,8 +24,8 @@ namespace game
 
 	void game::execute()
 	{
-		hola.assign_texture();
-		hello.assign_texture();
+		hola.create_model_matrix();
+		hello.create_model_matrix();
 		mRenderManager.init_render();
 	}
 

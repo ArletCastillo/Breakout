@@ -7,6 +7,7 @@
 #include "i_update.hpp"
 #include "texture.hpp"
 #include "vertex.hpp"
+#include "matrix_4.hpp"
 
 namespace Engine
 {
@@ -28,7 +29,7 @@ namespace Engine
 
 			virtual std::vector<Engine::math::vertex> get_vertices();
 			virtual std::vector<int> get_indices();
-			virtual Engine::utilities::texture get_texture();
+			virtual Engine::math::matrix_4 get_model_matrix();
 
 		protected:
 			//members

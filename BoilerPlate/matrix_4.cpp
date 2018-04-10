@@ -111,13 +111,15 @@ namespace Engine
 		}
 
 		//Translate the matrix
-		matrix_4 matrix_4::translate(Vector_4 pTranslation)
+		void matrix_4::translate(Vector_4 pTranslation)
 		{
-			matrix_4 newMatrix = matrix_4();
-			newMatrix.mMatrix[3] = pTranslation.mX;
-			newMatrix.mMatrix[7] = pTranslation.mY;
-			newMatrix.mMatrix[11] = pTranslation.mZ;
-			return newMatrix;
+			matrix_4 newMatrix;
+
+			newMatrix.mMatrix[12] = pTranslation.mX;
+			newMatrix.mMatrix[13] = pTranslation.mY;
+			newMatrix.mMatrix[14] = pTranslation.mZ;
+			
+			*this = *this * newMatrix;
 		}
 
 		//Rotates the matrix in th X axis
@@ -143,14 +145,14 @@ namespace Engine
 		}
 
 		//Rotates the matrix in th Z axis
-		matrix_4 matrix_4::rotate_z(float angle)
+		void matrix_4::rotate_z(float angle)
 		{
 			matrix_4 newMatrix = matrix_4();
 			newMatrix.mMatrix[0] = std::cos(-angle);
 			newMatrix.mMatrix[1] = -std::sin(-angle);
 			newMatrix.mMatrix[4] = std::sin(-angle);
 			newMatrix.mMatrix[5] = std::cos(-angle);
-			return newMatrix;
+			*this = *this * newMatrix;
 		}
 
 		matrix_4 matrix_4::generate_ortho(float pXmax, float pXmin, float pYmax, float pYmin, float pZmax, float pZmin)
@@ -167,20 +169,18 @@ namespace Engine
 			return orthoMatrix;
 		}
 
-		matrix_4 matrix_4::generate_perspective(float pSceneSize, float pZmax, float pZmin)
+		void matrix_4::generate_perspective(float pSceneSize, float pZmax, float pZmin, float pScreenDimension)
 		{
-			matrix_4 perspectiveMatrix = matrix_4();
 
 			float  factor = 1 / (tan(pSceneSize * 0.5 *mathTools.to_radians(1)));
 			float deltaZFactor = 1 / (pZmax - pZmin);
-			perspectiveMatrix.mMatrix[0] = factor;
-			perspectiveMatrix.mMatrix[5] = factor;
-			perspectiveMatrix.mMatrix[10] = -pZmax * deltaZFactor;
-			perspectiveMatrix.mMatrix[11] = -1;
-			perspectiveMatrix.mMatrix[14] = -pZmax * pZmin * deltaZFactor;
-			perspectiveMatrix.mMatrix[15] = 0;
 
-			return perspectiveMatrix;
+			mMatrix[0] = factor * pScreenDimension;
+			mMatrix[5] = factor;
+			mMatrix[10] = -pZmax * deltaZFactor;
+			mMatrix[11] = -1;
+			mMatrix[14] = -pZmax * pZmin * deltaZFactor;
+			mMatrix[15] = 0;
 		}
 
 		matrix_4 matrix_4::look_at(Vector_3 pActualPosition, Vector_3 pNewLookingPosition)
@@ -210,6 +210,26 @@ namespace Engine
 			lookingAtMatrix.mMatrix[11] = pActualPosition.mZ;
 
 			return lookingAtMatrix;
+		}
+
+		void matrix_4::copy_matrix(float pMatrixToCopy[])
+		{
+			pMatrixToCopy[0] = mMatrix[0];
+			pMatrixToCopy[1] = mMatrix[1];
+			pMatrixToCopy[2] = mMatrix[2];
+			pMatrixToCopy[3] = mMatrix[3];
+			pMatrixToCopy[4] = mMatrix[4];
+			pMatrixToCopy[5] = mMatrix[5];
+			pMatrixToCopy[6] = mMatrix[6];
+			pMatrixToCopy[7] = mMatrix[7];
+			pMatrixToCopy[8] = mMatrix[8];
+			pMatrixToCopy[9] = mMatrix[9];
+			pMatrixToCopy[10] = mMatrix[10];
+			pMatrixToCopy[11] = mMatrix[11];
+			pMatrixToCopy[12] = mMatrix[12];
+			pMatrixToCopy[13] = mMatrix[13];
+			pMatrixToCopy[14] = mMatrix[14];
+			pMatrixToCopy[15] = mMatrix[15];
 		}
 
 		//Returns the matrix

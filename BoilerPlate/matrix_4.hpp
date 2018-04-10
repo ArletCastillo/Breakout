@@ -34,13 +34,15 @@ namespace Engine
 			matrix_4 get_transpose();
 			void set_identity();
 			Vector_3 get_angle();
-			matrix_4 translate(Vector_4);
+			void translate(Vector_4);
 			matrix_4 rotate_x(float);
 			matrix_4 rotate_y(float);
-			matrix_4 rotate_z(float);
+			void rotate_z(float);
 			matrix_4 generate_ortho(float, float, float, float, float, float);
-			matrix_4 generate_perspective(float, float, float);
+			void generate_perspective(float, float, float, float);
+
 			matrix_4 look_at(Vector_3, Vector_3);
+			void copy_matrix(float[]);
 
 			//Global variables
 			Math_Utilities mathTools;

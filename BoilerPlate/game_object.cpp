@@ -98,7 +98,11 @@ namespace Engine
 		{
 		}
 
-		void game_object::assign_texture()
+		void game_object::create_model_matrix()
+		{
+		}
+
+		void game_object::move_object()
 		{
 		}
 

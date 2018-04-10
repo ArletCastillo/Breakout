@@ -31,9 +31,9 @@ namespace Engine
 			return std::vector<int>();
 		}
 
-		Engine::utilities::texture component::get_texture()
+		Engine::math::matrix_4 component::get_model_matrix()
 		{
-			return NULL;
+			return Engine::math::matrix_4();
 		}
 
 		

@@ -10,6 +10,7 @@
 #include "shaders_utilities.hpp"
 #include "texture.hpp"
 #include "vertex.hpp"
+#include "Vector_4.hpp"
 
 namespace Engine
 {
@@ -26,7 +27,7 @@ namespace Engine
 		{
 		public:
 			renderer();
-			//renderer(std::vector<Engine::math::vertex>, std::vector<int>);
+			renderer(int, int);
 			~renderer();
 			void vertex_loader();
 			void init_render();
@@ -37,6 +38,7 @@ namespace Engine
 			void objects_activator();
 			void objects_atrributes_manager();
 			void select_texture(Engine::core::game_object);
+			void mvp_manager(Engine::math::matrix_4);
 
 			//Global variables
 			bool fillOrLineDrawing;
@@ -54,6 +56,7 @@ namespace Engine
 			int mFrameHeight;
 			int mFrameWidth;
 			std::vector<texture> mGameObjectTextures;
+			
 		};
 	}
 }

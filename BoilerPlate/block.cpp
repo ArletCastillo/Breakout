@@ -12,10 +12,10 @@ namespace game
 	{
 		vertices = new c_object_vertices("Vertices info");
 
-		vertices->mVertices.push_back({ 0.03f,  0.03f, 0.0f,  1.0f, 0.0f, 0.0f, 1.0f,  1.0f, 1.0f });
-		vertices->mVertices.push_back({ 0.03f, -0.03f, 0.0f,  1.0f, 0.0f, 0.0f, 1.0f,  1.0f, 0.0f });
-		vertices->mVertices.push_back({ -0.03f,  0.03f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f,  0.0f, 1.0f });
-		vertices->mVertices.push_back({ -0.03f, -0.03f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f,  0.0f, 0.0f });
+		vertices->mVertices.push_back({ 0.1f,  0.1f, 0.0f,  1.0f, 0.0f, 0.0f, 1.0f,  1.0f, 1.0f });
+		vertices->mVertices.push_back({ 0.1f, -0.1f, 0.0f,  1.0f, 0.0f, 0.0f, 1.0f,  1.0f, 0.0f });
+		vertices->mVertices.push_back({ -0.1f,  0.1f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f,  0.0f, 1.0f });
+		vertices->mVertices.push_back({ -0.1f, -0.1f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f,  0.0f, 0.0f });
 
 		vertices->mIndices.push_back(0);
 		vertices->mIndices.push_back(1);
@@ -27,9 +27,9 @@ namespace game
 		attach_component(vertices);
 	}
 
-	void block::assign_texture()
+	void block::create_model_matrix()
 	{
-		texture = new c_object_texture("Object texture", "assets/block.png");
-		attach_component(texture);
+		modelMatrix = new c_object_model_matrix("Object model matrix");
+		attach_component(modelMatrix);
 	}
 }

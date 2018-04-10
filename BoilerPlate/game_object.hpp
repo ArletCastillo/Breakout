@@ -31,8 +31,10 @@ namespace Engine
 			void remove_child(game_object*);
 			void update(double pDeltaTime) override;
 			void render() override;
+
 			virtual void fill_vertices_info();
-			virtual void assign_texture();
+			virtual void create_model_matrix();
+			virtual void move_object();
 
 			//getter functions
 			std::vector<component*>get_components() const { return mComponents; }

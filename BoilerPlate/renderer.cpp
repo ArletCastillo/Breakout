@@ -9,11 +9,12 @@ namespace Engine
 			fillOrLineDrawing = true;
 		}
 
-		/*Engine::utilities::renderer::renderer(std::vector<Engine::math::vertex> pObjectVertices, std::vector<int> pObjectIndices)
+		renderer::renderer(int pHeight, int pWidth)
 		{
 			fillOrLineDrawing = true;
-		}*/
-
+			mFrameHeight = pHeight;
+			mFrameWidth = pWidth;
+		}
 
 		renderer::~renderer()
 		{
@@ -66,6 +67,8 @@ namespace Engine
 			glUseProgram(mProgramID);
 
 			select_texture(pObject);
+
+			mvp_manager(pObject.get_components()[1]->get_model_matrix().get_matrix());
 
 			glBindVertexArray(mVertexArrayObject);
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mElementsBufferObject);
@@ -178,6 +181,40 @@ namespace Engine
 			default:
 				break;
 			}
+		}
+		void renderer::mvp_manager(Engine::math::matrix_4 pObjectModelMatrix)
+		{
+			Engine::math::matrix_4 mModelMatrix = Engine::math::matrix_4();
+			Engine::math::matrix_4 mViewMatrix = Engine::math::matrix_4();
+			Engine::math::matrix_4 mProjectionMatrix = Engine::math::matrix_4();
+
+			mModelMatrix.translate(Engine::math::Vector_4(0.0, 0.80, 0.0, 1.0));
+			mModelMatrix.rotate_z(0.0f);
+
+
+			mViewMatrix.translate(Engine::math::Vector_4(0.0, 0.0, -3.0, 1.0));
+			mViewMatrix.rotate_z(0.0f);
+			mProjectionMatrix.generate_perspective(35.0f, 0.1f, 100.0f, (float)mFrameHeight / mFrameWidth);
+
+			GLuint modelLocation = glGetUniformLocation(mProgramID, "Model");
+			GLuint viewLocation = glGetUniformLocation(mProgramID, "View");
+			GLuint projectionLocation = glGetUniformLocation(mProgramID, "Projection");
+
+			float modelMatrix[16];
+			float viewMatrix[16];
+			float projectionMatrix[16];
+
+			pObjectModelMatrix.copy_matrix(modelMatrix);
+
+			mViewMatrix.copy_matrix(viewMatrix);
+
+			mProjectionMatrix.copy_matrix(projectionMatrix);
+
+			glUniformMatrix4fv(modelLocation, 1, GL_FALSE, modelMatrix);
+			glUniformMatrix4fv(viewLocation, 1, GL_FALSE, viewMatrix);
+			glUniformMatrix4fv(projectionLocation, 1, GL_FALSE, projectionMatrix);
+
+			float resolution[] = { static_cast<float>(mFrameWidth), static_cast<float>(mFrameHeight) };
 		}
 	}
 }

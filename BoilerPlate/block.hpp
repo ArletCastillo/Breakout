@@ -15,11 +15,11 @@ namespace game
 
 		//functions
 		void fill_vertices_info() override;
-		void assign_texture() override;
+		void create_model_matrix() override;
 
 		//members
 		c_object_vertices *vertices;
-		c_object_texture *texture;
+		c_object_model_matrix *modelMatrix;
 	};
 
 }

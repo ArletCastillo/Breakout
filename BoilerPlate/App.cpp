@@ -23,6 +23,7 @@ namespace Engine
 	{
 		m_state = GameState::UNINITIALIZED;
 		m_lastFrameTime = m_timer->GetElapsedTimeInSeconds();
+		mGame = game::game(m_height, m_width);
 	}
 
 	App::~App()

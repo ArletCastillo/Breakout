@@ -27,10 +27,12 @@ namespace game
 		attach_component(vertices);
 	}
 
-	void ball::assign_texture()
+	
+	void ball::create_model_matrix()
 	{
-		texture = new c_object_texture("Object texture", "assets/ball.png");
-		attach_component(texture);
+		modelMatrix = new c_object_model_matrix("Object model matrix");
+		modelMatrix->mModelMatrix.translate(Engine::math::Vector_4(0.3f, -0.4f, 0.0f, 0.0f));
+		attach_component(modelMatrix);
 	}
 }
 
