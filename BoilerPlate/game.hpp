@@ -4,6 +4,7 @@
 #define _GAME_HPP
 
 #include "ball.hpp"
+#include "block.hpp"
 #include "renderer.hpp"
 
 namespace game
@@ -23,7 +24,9 @@ namespace game
 	private:
 		//members
 		Engine::utilities::renderer mRenderManager;
+		Engine::utilities::renderer mRenderManager2;
 		ball hola;
+		block hello;
 	};
 }
 	
