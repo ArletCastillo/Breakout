@@ -6,6 +6,8 @@ namespace game
 	{
 		fill_vertices_info();
 		create_model_matrix();
+		create_position_vector();
+		isAttachedToPaddle = true;
 		mId = 1;
 	}
 
@@ -32,8 +34,14 @@ namespace game
 	void ball::create_model_matrix()
 	{
 		modelMatrix = new c_object_model_matrix("Object model matrix");
-		modelMatrix->mModelMatrix.translate(Engine::math::Vector_4(0.3f, -0.4f, 0.0f, 0.0f));
+		modelMatrix->mModelMatrix.translate(Engine::math::Vector_4(0.0f, -0.83f, 0.0f, 0.0f));
 		attach_component(modelMatrix);
+	}
+
+	void ball::create_position_vector()
+	{
+		position = new c_object_position("Object position");
+		attach_component(position);
 	}
 }
 

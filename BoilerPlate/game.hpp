@@ -26,6 +26,7 @@ namespace game
 		void execute();
 		void render();
 		void toggle_drawing_mode();
+		void toggle_ball_attachment();
 		void game_input_manager();
 
 		Engine::utilities::input_manager mInputManager;

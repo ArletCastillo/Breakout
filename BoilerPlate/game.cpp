@@ -28,13 +28,14 @@ namespace game
 
 	game::~game()
 	{
-		mRenderManager.~renderer();
 	}
 
 
 	void game::update()
 	{
 		game_input_manager();
+		if(mBall.isAttachedToPaddle==false)
+			mBall.move_object(Engine::math::Vector_4(0.0, 0.010, 0.0, 0.0));
 	}
 
 	void game::execute()
@@ -49,30 +50,43 @@ namespace game
 		mRenderManager.render(mBall);
 		mRenderManager.render(mPaddle);
 
-		for (int i = 0; i < mLevelManager.get_blocks().size(); i++)
+		/*for (int i = 0; i < mLevelManager.get_blocks().size(); i++)
 		{
 			mRenderManager.render(*mLevelManager.get_blocks()[i]);
-		}
+		}*/
 	}
 
 	void game::toggle_drawing_mode()
 	{
 		mRenderManager.toggle_fill_or_line();
 	}
+
+	void game::toggle_ball_attachment()
+	{
+		if (mBall.isAttachedToPaddle == true)
+			mBall.isAttachedToPaddle = false;
+		else
+			mBall.isAttachedToPaddle = true;
+	}
+
 	void game::game_input_manager()
 	{
 		if (mInputManager.get_key_a() && mPaddle.get_components()[2]->get_position().mX > -1.52)
 		{
 			mPaddle.move_object(Engine::math::Vector_4(-0.035, 0.0, 0.0, 0.0));
-			std::cout << mPaddle.get_components()[2]->get_position().mX << "\n";
-			std::cout << mPaddle.get_components()[2]->get_position().mY << "\n";
+			if (mBall.isAttachedToPaddle == true)
+			{
+				mBall.move_object(Engine::math::Vector_4(-0.035, 0.0, 0.0, 0.0));
+			}
 		}
 
 		if (mInputManager.get_key_d() && mPaddle.get_components()[2]->get_position().mX < 1.52)
 		{
 			mPaddle.move_object(Engine::math::Vector_4(0.035, 0.0, 0.0, 0.0));
-			std::cout << mPaddle.get_components()[2]->get_position().mX << "\n";
-			std::cout << mPaddle.get_components()[2]->get_position().mY<< "\n";
+			if (mBall.isAttachedToPaddle == true)
+			{
+				mBall.move_object(Engine::math::Vector_4(0.035, 0.0, 0.0, 0.0));
+			}
 		}
 	}
 }

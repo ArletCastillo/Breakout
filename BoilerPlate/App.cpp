@@ -94,6 +94,9 @@ namespace Engine
 		case SDL_SCANCODE_D:
 			mGame.mInputManager.set_key_d(true);
 			break;
+		case SDL_SCANCODE_SPACE:
+			mGame.toggle_ball_attachment();
+			break;
 		default:			
 			SDL_Log("%S was pressed.", keyBoardEvent.keysym.scancode);
 			break;
