@@ -15,6 +15,7 @@ namespace Engine
 
 	App::App(const std::string& title, const int width, const int height)
 		: m_title(title)
+		, m_sound(irrklang::createIrrKlangDevice())
 		, m_width(width)
 		, m_height(height)
 		, m_nUpdates(0)
@@ -23,11 +24,14 @@ namespace Engine
 	{
 		m_state = GameState::UNINITIALIZED;
 		m_lastFrameTime = m_timer->GetElapsedTimeInSeconds();
+		mGame = game::game(m_height, m_width);
+		m_sound->setSoundVolume(0.5f);
 	}
 
 	App::~App()
 	{
 		CleanupSDL();
+		m_sound->removeAllSoundSources();
 	}
 
 	void App::Execute()
@@ -40,7 +44,7 @@ namespace Engine
 
 		m_state = GameState::RUNNING;
 
-		mGame.execute(m_height, m_width);
+		mGame.execute();
 
 		SDL_Event event;
 		while (m_state == GameState::RUNNING)
@@ -87,6 +91,17 @@ namespace Engine
 		case SDL_SCANCODE_Q: 
 			mGame.toggle_drawing_mode();
 			break;
+		case SDL_SCANCODE_A:
+			mGame.mInputManager.set_key_a(true);
+			m_sound->play2D("sounds/thrust.wav");
+			break;
+		case SDL_SCANCODE_D:
+			mGame.mInputManager.set_key_d(true);
+			m_sound->play2D("sounds/thrust.wav");
+			break;
+		case SDL_SCANCODE_SPACE:
+			mGame.toggle_ball_attachment();
+			break;
 		default:			
 			SDL_Log("%S was pressed.", keyBoardEvent.keysym.scancode);
 			break;
@@ -100,6 +115,12 @@ namespace Engine
 		case SDL_SCANCODE_ESCAPE:
 			OnExit();
 			break;
+		case SDL_SCANCODE_A:
+			mGame.mInputManager.set_key_a(false);
+			break;
+		case SDL_SCANCODE_D:
+			mGame.mInputManager.set_key_d(false);
+			break;
 		default:
 			//DO NOTHING
 			break;
@@ -111,6 +132,7 @@ namespace Engine
 		double startTime = m_timer->GetElapsedTimeInSeconds();
 
 		// Update code goes here
+		mGame.update();
 		//
 
 		double endTime = m_timer->GetElapsedTimeInSeconds();
@@ -149,8 +171,8 @@ namespace Engine
 
 		SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
 
-		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
-		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 2);
+		//SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
+		//SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 2);
 
 		SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 		SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);

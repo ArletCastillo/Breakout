@@ -9,20 +9,25 @@
 
 namespace Engine
 {
-	class texture
+	namespace utilities
 	{
-	public:
-		texture();
-		texture(const char *);
-		~texture();
+		class texture
+		{
+		public:
+			//constructors ~ destructor
+			texture();
+			texture(const char *);
+			~texture();
 
-		GLuint get_texture();
-		GLuint load_texture(const char *);
-		void create_texture(const char *, int, int, unsigned char*);
-	private:
-
-		GLuint mTexture;
-	};
+			//functions
+			GLuint get_texture();
+			GLuint load_texture(const char *);
+			void create_texture(const char *, int, int, unsigned char*);
+		private:
+			//member
+			GLuint mTexture;
+		};
+	}
 }
 
 #endif // !_TEXTURE_HPP

@@ -7,15 +7,19 @@
 
 namespace Engine 
 {
-	struct error_manager
+	namespace utilities
 	{
-	public:
-		error_manager();
-		~error_manager();
+		struct error_manager
+		{
+		public:
+			//constructor ~ destructor
+			error_manager();
+			~error_manager();
 
-		int show_errors(std::string, std::string, std::string, std::string);
-	};
-
+			//function
+			int show_errors(std::string, std::string, std::string, std::string);
+		};
+	}
 }
 
 #endif // !_ERROR_MANAGER_HPP

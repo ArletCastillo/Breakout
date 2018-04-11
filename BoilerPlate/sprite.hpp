@@ -1,11 +1,20 @@
 #pragma once
 
+#ifndef _SPRITE_HPP
+#define _SPRITE_HPP
+
 namespace Engine 
 {
-	class sprite
+	namespace utilities
 	{
-	public:
-		sprite();
-		~sprite();
-	};
+		class sprite
+		{
+		public:
+			//constructor ~ destructor
+			sprite();
+			~sprite();
+		};
+	}
 }
+
+#endif // !_SPRITE_HPP

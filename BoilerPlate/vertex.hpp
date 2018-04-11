@@ -5,7 +5,7 @@
 
 namespace Engine
 {
-	namespace math 
+	namespace math
 	{
 		struct vertex
 		{
@@ -13,5 +13,6 @@ namespace Engine
 		};
 	}
 }
+
 #endif // !_VERTEX_HPP
 

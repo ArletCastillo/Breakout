@@ -10,6 +10,8 @@
 #include "SDLEvent.hpp"
 #include "TimeManager.hpp"
 //
+#include <irrKlang.h>
+
 #include "game.hpp"
 
 namespace Engine
@@ -36,24 +38,24 @@ namespace Engine
 		/* =============================================================
 		 * PUBLIC FUNCTIONS
 		 * ============================================================= */
-		App( const std::string& title, const int width, const int height );
-		~App( );
-		void Execute						( );
-		bool Init							( );
-		void Update							( );
-		void Render							( );
+		App(const std::string& title, const int width, const int height);
+		~App();
+		void Execute();
+		bool Init();
+		void Update();
+		void Render();
 	private:
 		/* =============================================================
 		 * PRIVATE FUNCTIONS
 		 * ============================================================= */
-		bool SDLInit						( );
-		bool GlewInit						( );
-		void SetupViewport					( );
-		void CleanupSDL						( );
-		void OnResize						( int width, int height ) override;
-		void OnExit							( ) override;
-		void OnKeyDown						( SDL_KeyboardEvent keyBoardEvent ) override;
-		void OnKeyUp						( SDL_KeyboardEvent keyBoardEvent ) override;
+		bool SDLInit();
+		bool GlewInit();
+		void SetupViewport();
+		void CleanupSDL();
+		void OnResize(int width, int height) override;
+		void OnExit() override;
+		void OnKeyDown(SDL_KeyboardEvent keyBoardEvent) override;
+		void OnKeyUp(SDL_KeyboardEvent keyBoardEvent) override;
 
 
 		/* =============================================================
@@ -69,7 +71,7 @@ namespace Engine
 		GameState::State					m_state;
 		Engine::TimeManager*				m_timer;
 		game::game                          mGame;
-
+		irrklang::ISoundEngine*             m_sound;
 	};
 }
 #endif /* GAME_HPP */
