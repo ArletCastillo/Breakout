@@ -15,6 +15,7 @@ namespace Engine
 
 	App::App(const std::string& title, const int width, const int height)
 		: m_title(title)
+		, m_sound(irrklang::createIrrKlangDevice())
 		, m_width(width)
 		, m_height(height)
 		, m_nUpdates(0)
@@ -24,11 +25,13 @@ namespace Engine
 		m_state = GameState::UNINITIALIZED;
 		m_lastFrameTime = m_timer->GetElapsedTimeInSeconds();
 		mGame = game::game(m_height, m_width);
+		m_sound->setSoundVolume(0.5f);
 	}
 
 	App::~App()
 	{
 		CleanupSDL();
+		m_sound->removeAllSoundSources();
 	}
 
 	void App::Execute()
@@ -90,9 +93,11 @@ namespace Engine
 			break;
 		case SDL_SCANCODE_A:
 			mGame.mInputManager.set_key_a(true);
+			m_sound->play2D("sounds/thrust.wav");
 			break;
 		case SDL_SCANCODE_D:
 			mGame.mInputManager.set_key_d(true);
+			m_sound->play2D("sounds/thrust.wav");
 			break;
 		case SDL_SCANCODE_SPACE:
 			mGame.toggle_ball_attachment();
