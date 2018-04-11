@@ -11,7 +11,7 @@ struct c_object_model_matrix : Engine::core::component
 	public:
 		//constructor
 		c_object_model_matrix(std::string);
-		Engine::math::matrix_4 get_model_matrix() override;
+		Engine::math::matrix_4* get_model_matrix() override;
 
 		//member
 		Engine::math::matrix_4 mModelMatrix;

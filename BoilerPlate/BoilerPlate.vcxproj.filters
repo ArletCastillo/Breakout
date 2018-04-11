@@ -59,6 +59,12 @@
       <Filter>game</Filter>
     </ClCompile>
     <ClCompile Include="c_object_position.cpp" />
+    <ClCompile Include="input_manager.cpp">
+      <Filter>Engine\utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="paddle.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.hpp" />
@@ -129,6 +135,12 @@
       <Filter>game</Filter>
     </ClInclude>
     <ClInclude Include="c_object_position.hpp" />
+    <ClInclude Include="input_manager.hpp">
+      <Filter>Engine\utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="paddle.hpp">
+      <Filter>game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Engine">

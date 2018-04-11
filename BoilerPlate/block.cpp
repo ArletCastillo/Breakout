@@ -5,6 +5,7 @@ namespace game
 	block::block()
 	{
 		fill_vertices_info();
+		create_model_matrix();
 		mId = 2;
 	}
 
@@ -12,10 +13,10 @@ namespace game
 	{
 		vertices = new c_object_vertices("Vertices info");
 
-		vertices->mVertices.push_back({ 0.1f,  0.1f, 0.0f,  1.0f, 0.0f, 0.0f, 1.0f,  1.0f, 1.0f });
-		vertices->mVertices.push_back({ 0.1f, -0.1f, 0.0f,  1.0f, 0.0f, 0.0f, 1.0f,  1.0f, 0.0f });
-		vertices->mVertices.push_back({ -0.1f,  0.1f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f,  0.0f, 1.0f });
-		vertices->mVertices.push_back({ -0.1f, -0.1f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f,  0.0f, 0.0f });
+		vertices->mVertices.push_back({ 0.1f,  0.05f, 0.0f,  1.0f, 0.0f, 0.0f, 1.0f,  1.0f, 1.0f });
+		vertices->mVertices.push_back({ 0.1f, -0.05f, 0.0f,  1.0f, 0.0f, 0.0f, 1.0f,  1.0f, 0.0f });
+		vertices->mVertices.push_back({ -0.1f,  0.05f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f,  0.0f, 1.0f });
+		vertices->mVertices.push_back({ -0.1f, -0.05f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f,  0.0f, 0.0f });
 
 		vertices->mIndices.push_back(0);
 		vertices->mIndices.push_back(1);

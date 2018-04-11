@@ -5,7 +5,9 @@
 
 #include "ball.hpp"
 #include "block.hpp"
+#include "paddle.hpp"
 #include "renderer.hpp"
+#include "input_manager.hpp"
 
 namespace game
 {
@@ -18,15 +20,20 @@ namespace game
 		~game();
 
 		//functions
+		void update();
 		void execute();
 		void render();
 		void toggle_drawing_mode();
+		void game_input_manager();
+
+		input_manager mInputManager;
 
 	private:
 		//members
 		Engine::utilities::renderer mRenderManager;
-		ball hola;
-		block hello;
+		ball mBall;
+		block mBrick;
+		paddle mPaddle;
 	};
 }
 	

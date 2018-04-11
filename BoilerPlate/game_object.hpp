@@ -34,7 +34,8 @@ namespace Engine
 
 			virtual void fill_vertices_info();
 			virtual void create_model_matrix();
-			virtual void move_object();
+			virtual void create_position_vector();
+			virtual void move_object(Engine::math::Vector_4);
 
 			//getter functions
 			std::vector<component*>get_components() const { return mComponents; }

@@ -68,7 +68,7 @@ namespace Engine
 
 			select_texture(pObject);
 
-			mvp_manager(pObject.get_components()[1]->get_model_matrix().get_matrix());
+			mvp_manager(pObject.get_components()[1]->get_model_matrix()->get_matrix());
 
 			glBindVertexArray(mVertexArrayObject);
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mElementsBufferObject);
@@ -176,6 +176,12 @@ namespace Engine
 			{
 				glActiveTexture(GL_TEXTURE0);
 				glBindTexture(GL_TEXTURE_2D, mGameObjectTextures[TEXTURE_INDEX_BLOCK].get_texture());
+				break;
+			}
+			case 3:
+			{
+				glActiveTexture(GL_TEXTURE0);
+				glBindTexture(GL_TEXTURE_2D, mGameObjectTextures[TEXTURE_INDEX_PADDLE].get_texture());
 				break;
 			}
 			default:

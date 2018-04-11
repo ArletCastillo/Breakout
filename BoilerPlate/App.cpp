@@ -88,6 +88,12 @@ namespace Engine
 		case SDL_SCANCODE_Q: 
 			mGame.toggle_drawing_mode();
 			break;
+		case SDL_SCANCODE_A:
+			mGame.mInputManager.set_key_a(true);
+			break;
+		case SDL_SCANCODE_D:
+			mGame.mInputManager.set_key_d(true);
+			break;
 		default:			
 			SDL_Log("%S was pressed.", keyBoardEvent.keysym.scancode);
 			break;
@@ -101,6 +107,12 @@ namespace Engine
 		case SDL_SCANCODE_ESCAPE:
 			OnExit();
 			break;
+		case SDL_SCANCODE_A:
+			mGame.mInputManager.set_key_a(false);
+			break;
+		case SDL_SCANCODE_D:
+			mGame.mInputManager.set_key_d(false);
+			break;
 		default:
 			//DO NOTHING
 			break;
@@ -112,6 +124,7 @@ namespace Engine
 		double startTime = m_timer->GetElapsedTimeInSeconds();
 
 		// Update code goes here
+		mGame.update();
 		//
 
 		double endTime = m_timer->GetElapsedTimeInSeconds();

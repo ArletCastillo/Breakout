@@ -31,9 +31,18 @@ namespace Engine
 			return std::vector<int>();
 		}
 
-		Engine::math::matrix_4 component::get_model_matrix()
+		Engine::math::matrix_4* component::get_model_matrix()
 		{
-			return Engine::math::matrix_4();
+			return &Engine::math::matrix_4();
+		}
+
+		Engine::math::Vector_4 component::get_position()
+		{
+			return Engine::math::Vector_4();
+		}
+
+		void component::set_position(Engine::math::Vector_4)
+		{
 		}
 
 		

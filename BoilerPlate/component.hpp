@@ -29,7 +29,9 @@ namespace Engine
 
 			virtual std::vector<Engine::math::vertex> get_vertices();
 			virtual std::vector<int> get_indices();
-			virtual Engine::math::matrix_4 get_model_matrix();
+			virtual Engine::math::matrix_4* get_model_matrix();
+			virtual Engine::math::Vector_4 get_position();
+			virtual void set_position(Engine::math::Vector_4);
 
 		protected:
 			//members

@@ -102,8 +102,15 @@ namespace Engine
 		{
 		}
 
-		void game_object::move_object()
+		void game_object::create_position_vector()
 		{
+		}
+
+		void game_object::move_object(Engine::math::Vector_4 pMoveVector)
+		{
+			this->get_components()[1]->get_model_matrix()->translate(pMoveVector);
+			this->get_components()[2]->set_position(get_components()[2]->get_position() += pMoveVector);
+
 		}
 
 	}

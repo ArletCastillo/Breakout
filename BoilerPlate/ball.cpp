@@ -5,6 +5,7 @@ namespace game
 	ball::ball()
 	{
 		fill_vertices_info();
+		create_model_matrix();
 		mId = 1;
 	}
 
