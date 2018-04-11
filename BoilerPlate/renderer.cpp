@@ -55,6 +55,7 @@ namespace Engine
 			mGameObjectTextures.push_back(texture("assets/ball.png"));
 			mGameObjectTextures.push_back(texture("assets/paddle.png"));
 			mGameObjectTextures.push_back(texture("assets/block_solid.png"));
+			mGameObjectTextures.push_back(texture("assets/background.jpg"));
 		}
 
 		void renderer::render(Engine::core::game_object pObject)
@@ -182,6 +183,18 @@ namespace Engine
 			{
 				glActiveTexture(GL_TEXTURE0);
 				glBindTexture(GL_TEXTURE_2D, mGameObjectTextures[TEXTURE_INDEX_PADDLE].get_texture());
+				break;
+			}
+			case 4:
+			{
+				glActiveTexture(GL_TEXTURE0);
+				glBindTexture(GL_TEXTURE_2D, mGameObjectTextures[TEXTURE_INDEX_SOLID_BLOCK].get_texture());
+				break;
+			}
+			case 5:
+			{
+				glActiveTexture(GL_TEXTURE0);
+				glBindTexture(GL_TEXTURE_2D, mGameObjectTextures[TEXTURE_INDEX_BACKGROUND].get_texture());
 				break;
 			}
 			default:

@@ -65,7 +65,15 @@
     <ClCompile Include="paddle.cpp">
       <Filter>game</Filter>
     </ClCompile>
-    <ClCompile Include="game_levels.cpp" />
+    <ClCompile Include="block_solid.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="game_levels.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="background.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.hpp" />
@@ -142,7 +150,15 @@
     <ClInclude Include="paddle.hpp">
       <Filter>game</Filter>
     </ClInclude>
-    <ClInclude Include="game_levels.hpp" />
+    <ClInclude Include="block_solid.hpp">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="game_levels.hpp">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="background.hpp">
+      <Filter>game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Engine">

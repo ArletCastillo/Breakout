@@ -22,6 +22,7 @@ namespace Engine
 		const int TEXTURE_INDEX_BALL = 1;
 		const int TEXTURE_INDEX_PADDLE = 2;
 		const int TEXTURE_INDEX_SOLID_BLOCK = 3;
+		const int TEXTURE_INDEX_BACKGROUND = 4;
 
 		class renderer
 		{

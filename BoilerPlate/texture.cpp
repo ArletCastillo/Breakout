@@ -59,7 +59,7 @@ namespace Engine
 
 		void texture::create_texture(const char *pTexturePath, int pWidth, int pHeight, unsigned char *data)
 		{
-			if (pTexturePath == "assets/block.png" || pTexturePath == "assets/block_solid.png")
+			if (pTexturePath == "assets/block.png" || pTexturePath == "assets/block_solid.png" || pTexturePath == "assets/background.jpg")
 			{
 				glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, pWidth, pHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
 				glGenerateMipmap(GL_TEXTURE_2D);

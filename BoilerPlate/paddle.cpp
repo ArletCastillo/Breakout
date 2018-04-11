@@ -15,10 +15,10 @@ namespace game
 	{
 		vertices = new c_object_vertices("Vertices info");
 
-		vertices->mVertices.push_back({ 0.15f, 0.035f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f });
-		vertices->mVertices.push_back({ 0.15f, -0.035f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f });
-		vertices->mVertices.push_back({ -0.15f,-0.035f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f });
-		vertices->mVertices.push_back({ -0.15f, 0.035f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f });
+		vertices->mVertices.push_back({ 0.15f, 0.035f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 1.0f });
+		vertices->mVertices.push_back({ 0.15f, -0.035f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.0f });
+		vertices->mVertices.push_back({ -0.15f,-0.035f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 0.0f });
+		vertices->mVertices.push_back({ -0.15f, 0.035f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 1.0f });
 
 		vertices->mIndices.push_back(0);
 		vertices->mIndices.push_back(2);

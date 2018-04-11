@@ -1,18 +1,13 @@
 #pragma once
-
-#ifndef _BRICK_HPP
-#define _BRICK_HPP
-
 #include "game_object.hpp"
 
-namespace game
+namespace game 
 {
-	class block : public Engine::core::game_object
+	class background : public Engine::core::game_object
 	{
 	public:
 		//constructor
-		block();
-		block(Engine::math::Vector_3);
+		background();
 
 		//functions
 		void fill_vertices_info() override;
@@ -24,7 +19,4 @@ namespace game
 		c_object_model_matrix *modelMatrix;
 		c_object_position *position;
 	};
-
 }
-
-#endif // !_BRICK_HPP

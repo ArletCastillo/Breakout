@@ -9,6 +9,7 @@ namespace game
 		mPaddle = paddle();
 		mRenderManager = Engine::utilities::renderer();
 		mLevelManager = game_levels();
+		mBackground = background();
 		mFrameHeight = 0;
 		mFrameWidth = 0;
 	}
@@ -20,6 +21,7 @@ namespace game
 		mPaddle = paddle();
 		mRenderManager = Engine::utilities::renderer(pHeight, pWidth);
 		mLevelManager = game_levels();
+		mBackground = background();
 		mFrameHeight = pHeight;
 		mFrameWidth = pWidth;
 	}
@@ -38,11 +40,12 @@ namespace game
 	void game::execute()
 	{
 		mRenderManager.init_render();
-		mLevelManager.load_levels("levels/level1.txt", 0.81f, 0.3);
+		mLevelManager.load_levels("levels/level1.txt", 3.3f, 0.58f);
 	}
 
 	void game::render()
 	{
+		mRenderManager.render(mBackground);
 		mRenderManager.render(mBall);
 		mRenderManager.render(mPaddle);
 
@@ -58,14 +61,14 @@ namespace game
 	}
 	void game::game_input_manager()
 	{
-		if (mInputManager.get_key_a())
+		if (mInputManager.get_key_a() && mPaddle.get_components()[2]->get_position().mX > -1.52)
 		{
 			mPaddle.move_object(Engine::math::Vector_4(-0.035, 0.0, 0.0, 0.0));
 			std::cout << mPaddle.get_components()[2]->get_position().mX << "\n";
 			std::cout << mPaddle.get_components()[2]->get_position().mY << "\n";
 		}
 
-		if (mInputManager.get_key_d())
+		if (mInputManager.get_key_d() && mPaddle.get_components()[2]->get_position().mX < 1.52)
 		{
 			mPaddle.move_object(Engine::math::Vector_4(0.035, 0.0, 0.0, 0.0));
 			std::cout << mPaddle.get_components()[2]->get_position().mX << "\n";

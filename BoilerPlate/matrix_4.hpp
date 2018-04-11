@@ -40,6 +40,7 @@ namespace Engine
 			void rotate_z(float);
 			matrix_4 generate_ortho(float, float, float, float, float, float);
 			void generate_perspective(float, float, float, float);
+			void scale(Vector_3);
 
 			matrix_4 look_at(Vector_3, Vector_3);
 			void copy_matrix(float[]);

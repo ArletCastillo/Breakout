@@ -9,6 +9,7 @@
 #include "renderer.hpp"
 #include "input_manager.hpp"
 #include "game_levels.hpp"
+#include "background.hpp"
 
 namespace game
 {
@@ -36,6 +37,7 @@ namespace game
 		ball mBall;
 		block mBrick;
 		paddle mPaddle;
+		background mBackground;
 
 		int mFrameHeight;
 		int mFrameWidth;

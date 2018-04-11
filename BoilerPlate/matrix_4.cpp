@@ -183,6 +183,13 @@ namespace Engine
 			mMatrix[15] = 0;
 		}
 
+		void matrix_4::scale(Vector_3 pScaleVector)
+		{
+			mMatrix[0] *= pScaleVector.mX;
+			mMatrix[5] *= pScaleVector.mY;
+			mMatrix[10] *= pScaleVector.mZ;
+		}
+
 		matrix_4 matrix_4::look_at(Vector_3 pActualPosition, Vector_3 pNewLookingPosition)
 		{
 			matrix_4 lookingAtMatrix = matrix_4();
