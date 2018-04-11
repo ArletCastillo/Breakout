@@ -6,6 +6,7 @@ namespace game
 	{
 		fill_vertices_info();
 		create_model_matrix();
+		create_position_vector();
 		mId = 2;
 	}
 
@@ -32,5 +33,10 @@ namespace game
 	{
 		modelMatrix = new c_object_model_matrix("Object model matrix");
 		attach_component(modelMatrix);
+	}
+	void block::create_position_vector()
+	{
+		position = new c_object_position("Object position");
+		attach_component(position);
 	}
 }

@@ -65,6 +65,7 @@
     <ClCompile Include="paddle.cpp">
       <Filter>game</Filter>
     </ClCompile>
+    <ClCompile Include="game_levels.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.hpp" />
@@ -141,6 +142,7 @@
     <ClInclude Include="paddle.hpp">
       <Filter>game</Filter>
     </ClInclude>
+    <ClInclude Include="game_levels.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Engine">

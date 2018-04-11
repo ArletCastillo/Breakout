@@ -180,6 +180,7 @@ copy /Y "$(SolutionDir)\Externals\SDL2-2.0.4\lib\x64\SDL2.dll" "$(TargetDir)SDL2
     <ClCompile Include="c_object_vertices.cpp" />
     <ClCompile Include="error_manager.cpp" />
     <ClCompile Include="game.cpp" />
+    <ClCompile Include="game_levels.cpp" />
     <ClCompile Include="game_object.cpp" />
     <ClCompile Include="input_manager.cpp" />
     <ClCompile Include="main.cpp" />
@@ -208,6 +209,7 @@ copy /Y "$(SolutionDir)\Externals\SDL2-2.0.4\lib\x64\SDL2.dll" "$(TargetDir)SDL2
     <ClInclude Include="c_object_position.hpp" />
     <ClInclude Include="error_manager.hpp" />
     <ClInclude Include="game.hpp" />
+    <ClInclude Include="game_levels.hpp" />
     <ClInclude Include="game_object.hpp" />
     <ClInclude Include="input_manager.hpp" />
     <ClInclude Include="i_render.hpp" />

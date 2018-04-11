@@ -8,6 +8,7 @@
 #include "paddle.hpp"
 #include "renderer.hpp"
 #include "input_manager.hpp"
+#include "game_levels.hpp"
 
 namespace game
 {
@@ -31,9 +32,13 @@ namespace game
 	private:
 		//members
 		Engine::utilities::renderer mRenderManager;
+		game_levels mLevelManager;
 		ball mBall;
 		block mBrick;
 		paddle mPaddle;
+
+		int mFrameHeight;
+		int mFrameWidth;
 	};
 }
 	
