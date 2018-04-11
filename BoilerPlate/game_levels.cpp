@@ -58,46 +58,22 @@ namespace game
 					newBlock->move_object(Engine::math::Vector_4((unitWidth * x) - 1.50f, (unitHeight * -y) + 0.85f, 0.0f, 0.0f));
 					mBlocks.push_back(newBlock);
 				}
-				//else if (pTileData[y][x] > 1)
-				//{
-				//	Engine::math::Vector_3 color = Engine::math::Vector_3(1.0f); // original: white
-				//	if (pTileData[y][x] == 2)
-				//		color = Engine::math::Vector_3(0.2f, 0.6f, 1.0f);
-				//	else if (pTileData[y][x] == 3)
-				//		color = Engine::math::Vector_3(0.0f, 0.7f, 0.0f);
-				//	else if (pTileData[y][x] == 4)
-				//		color = Engine::math::Vector_3(0.8f, 0.8f, 0.4f);
-				//	else if (pTileData[y][x] == 5)
-				//		color = Engine::math::Vector_3(1.0f, 0.5f, 0.0f);
+				else if (pTileData[y][x] > 1)
+				{
+					Engine::math::Vector_3 color = Engine::math::Vector_3(1.0f); // original: white
+					if (pTileData[y][x] == 2)
+						color = Engine::math::Vector_3(0.2f, 0.6f, 1.0f);
+					else if (pTileData[y][x] == 3)
+						color = Engine::math::Vector_3(0.0f, 0.7f, 0.0f);
+					else if (pTileData[y][x] == 4)
+						color = Engine::math::Vector_3(0.8f, 0.8f, 0.4f);
+					else if (pTileData[y][x] == 5)
+						color = Engine::math::Vector_3(1.0f, 0.5f, 0.0f);
 
-				//	block* newBlock = new block(Engine::math::Vector_3(color));
-				//	newBlock->move_object(Engine::math::Vector_4((unitWidth * x) - 1.365, (unitHeight * -y) + 0.8, 0.0f, 0.0f));
-				//	mBlocks.push_back(newBlock);
-				//	/*if (pTileData[y][x] == 2)
-				//	{
-				//		block* newBlock = new block(Engine::math::Vector_3(0.2f, 0.6f, 1.0f));
-				//		newBlock->move_object(Engine::math::Vector_4((unitWidth * x) - 1.365, (unitHeight * -y) + 0.8, 0.0f, 0.0f));
-				//		mBlocks.push_back(newBlock);
-				//	}
-				//	else if (pTileData[y][x] == 3)
-				//	{
-				//		block* newBlock = new block(Engine::math::Vector_3(0.0f, 0.7f, 0.0f));
-				//		newBlock->move_object(Engine::math::Vector_4((unitWidth * x) - 1.365, (unitHeight * -y) + 0.8, 0.0f, 0.0f));
-				//		mBlocks.push_back(newBlock);
-				//	}
-				//	else if (pTileData[y][x] == 4)
-				//	{
-				//		block* newBlock = new block(Engine::math::Vector_3(0.8f, 0.8f, 0.4f));
-				//		newBlock->move_object(Engine::math::Vector_4((unitWidth * x) - 1.365, (unitHeight * -y) + 0.8, 0.0f, 0.0f));
-				//		mBlocks.push_back(newBlock);
-				//	}
-				//	else if (pTileData[y][x] == 5)
-				//	{
-				//		block* newBlock = new block(Engine::math::Vector_3(1.0f, 0.5f, 0.0f));
-				//		newBlock->move_object(Engine::math::Vector_4((unitWidth * x) - 1.365, (unitHeight * -y) + 0.8, 0.0f, 0.0f));
-				//		mBlocks.push_back(newBlock);
-				//	}*/
-				//}
+					block* newBlock = new block(Engine::math::Vector_3(color));
+					newBlock->move_object(Engine::math::Vector_4((unitWidth * x) - 1.365, (unitHeight * -y) + 0.8, 0.0f, 0.0f));
+					mBlocks.push_back(newBlock);
+				}
 			}
 		}
 

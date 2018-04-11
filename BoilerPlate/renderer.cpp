@@ -18,12 +18,13 @@ namespace Engine
 
 		renderer::~renderer()
 		{
+			glDeleteBuffers(1, &mVertexBufferObject);
+			glDeleteVertexArrays(1, &mVertexArrayObject);
+			glDeleteProgram(mProgramID);
 		}
 
 		void renderer::vertex_loader()
 		{
-			objects_generator();
-
 			objects_activator();
 
 			objects_atrributes_manager();
@@ -39,9 +40,6 @@ namespace Engine
 			glBindVertexArray(0);
 
 			glUniform1i(glGetUniformLocation(mProgramID, "texture1"), 0);
-
-			/*float resolution[] = { static_cast<float>(pFrameWidth), static_cast<float>(pFrameHeight) };
-			glUniform2fv(glGetUniformLocation(mProgramID, "resolution"), 1, resolution);*/
 
 		}
 
