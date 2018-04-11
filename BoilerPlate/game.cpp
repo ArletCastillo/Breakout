@@ -31,19 +31,30 @@ namespace game
 	}
 
 
+	void game::colliding_detection()
+	{
+		for (int i = 0; i < mLevelManager.get_blocks().size(); i++)
+		{
+			float nearestX = std::max(mLevelManager.get_blocks()[i]->get_components()[2]->get_position().mX, std::min(mBall.get_components()[2]->get_position().mX, mLevelManager.get_blocks()[i]->get_components()[2]->get_position().mX + 0.390f));
+			float nearestY = std::max(mLevelManager.get_blocks()[i]->get_components()[2]->get_position().mY, std::min(mBall.get_components()[2]->get_position().mY, mLevelManager.get_blocks()[i]->get_components()[2]->get_position().mY + 0.220f));
+
+			float deltaX = mBall.get_components()[2]->get_position().mX - nearestX;
+			float deltaY = mBall.get_components()[2]->get_position().mY - nearestY;
+
+			if ((deltaX * deltaX + deltaY * deltaY) < (0.05f * 0.05f))
+			{
+				mLevelManager.get_blocks().erase(mLevelManager.get_blocks().begin() + i);
+			}
+		}
+	}
+
 	void game::update()
 	{
 		game_input_manager();
 		if (mBall.isAttachedToPaddle == false)
 		{
-			if (mBall.get_components()[2]->get_position().mY < 3.6f)
-			{
-				mBall.move_object(Engine::math::Vector_4(0.0, 0.010, 0.0, 0.0));
-			}
-			else
-			{
-				mBall.move_object(Engine::math::Vector_4(0.0, -0.010, 0.0, 0.0));
-			}
+			mBall.move_object(Engine::math::Vector_4(0.0, 0.010, 0.0, 0.0));
+			colliding_detection();
 		}
 	}
 

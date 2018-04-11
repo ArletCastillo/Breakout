@@ -18,9 +18,6 @@ namespace Engine
 
 		renderer::~renderer()
 		{
-			glDeleteBuffers(1, &mVertexBufferObject);
-			glDeleteVertexArrays(1, &mVertexArrayObject);
-			glDeleteProgram(mProgramID);
 		}
 
 		void renderer::vertex_loader()

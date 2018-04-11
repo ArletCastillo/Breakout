@@ -22,6 +22,7 @@ namespace game
 		~game();
 
 		//functions
+		void colliding_detection();
 		void update();
 		void execute();
 		void render();
