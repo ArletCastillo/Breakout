@@ -16,15 +16,22 @@
 
 namespace Engine
 {
-	struct shaders_utilities
+	namespace utilities
 	{
-	public:
-		shaders_utilities();
-		~shaders_utilities();
-		error_manager errorManager;
+		struct shaders_utilities
+		{
+		public:
+			//constructor ~ destructor
+			shaders_utilities();
+			~shaders_utilities();
 
-		GLuint load_shaders(const char *, const char *);
-	};
+			//function
+			GLuint load_shaders(const char *, const char *);
+
+			//member
+			error_manager errorManager;
+		};
+	}
 }
 
 #endif // !_SHADERS_UTILITIES_HPP

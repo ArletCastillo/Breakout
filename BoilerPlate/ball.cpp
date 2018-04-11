@@ -1,18 +1,48 @@
 #include "ball.hpp"
 
-game::ball::ball()
+namespace game 
 {
-	Engine::math::vertex mVertices[4] = {
-		{ 0.03f, 0.03f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f },  //top right
-		{ 0.03f,-0.03f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 1.0f, 0.0f },  //bottom right
-		{ -0.03f, 0.03f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f }, //top left
-		{ -0.03f,-0.03f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f }  //bottom left
-	};
+	ball::ball()
+	{
+		fill_vertices_info();
+		create_model_matrix();
+		create_position_vector();
+		isAttachedToPaddle = true;
+		mId = 1;
+	}
 
-	float mIndices[6] = {
-		0, 1, 2,
-		1, 3, 2
-	};
+	void ball::fill_vertices_info()
+	{
+		vertices = new c_object_vertices("Vertices info");
 
-	mTexturePath = Engine::texture("assets/ball.png");
+		vertices->mVertices.push_back({ 0.03f,  0.03f, 0.0f,  1.0f, 1.0f, 1.0f, 1.0f,  1.0f, 1.0f });
+		vertices->mVertices.push_back({ 0.03f, -0.03f, 0.0f,  1.0f, 1.0f, 1.0f, 1.0f,  1.0f, 0.0f });
+		vertices->mVertices.push_back({ -0.03f,  0.03f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f,  0.0f, 1.0f });
+		vertices->mVertices.push_back({ -0.03f, -0.03f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f,  0.0f, 0.0f });
+
+		vertices->mIndices.push_back(0);
+		vertices->mIndices.push_back(1);
+		vertices->mIndices.push_back(2);
+		vertices->mIndices.push_back(1);
+		vertices->mIndices.push_back(3);
+		vertices->mIndices.push_back(2);
+
+		attach_component(vertices);
+	}
+
+	
+	void ball::create_model_matrix()
+	{
+		modelMatrix = new c_object_model_matrix("Object model matrix");
+		modelMatrix->mModelMatrix.translate(Engine::math::Vector_4(0.0f, -0.83f, 0.0f, 0.0f));
+		attach_component(modelMatrix);
+	}
+
+	void ball::create_position_vector()
+	{
+		position = new c_object_position("Object position");
+		attach_component(position);
+	}
 }
+
+

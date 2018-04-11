@@ -10,17 +10,18 @@ namespace Engine
 	{
 		game_object::game_object()
 			: mParent(nullptr)
+			
 		{}
 
 		game_object::~game_object()
 		{
-			// Delete all attached components
-			//
-			while (!mComponents.empty()) delete mComponents.back(), mComponents.pop_back();
+			//// Delete all attached components
+			////
+			//while (!mComponents.empty()) delete mComponents.back(), mComponents.pop_back();
 
-			// Delete all attached children
-			//
-			while (!mChildren.empty()) delete mChildren.back(), mChildren.pop_back();
+			//// Delete all attached children
+			////
+			//while (!mChildren.empty()) delete mChildren.back(), mChildren.pop_back();
 		}
 
 		void game_object::attach_component(component* pComponent)
@@ -93,16 +94,24 @@ namespace Engine
 			}
 		}
 
-
-		Engine::math::vertex * game_object::getVertices()
+		void game_object::fill_vertices_info()
 		{
-			return mVertices;
 		}
 
-
-		int * game_object::getIndices()
+		void game_object::create_model_matrix()
 		{
-			return mIndices;
 		}
+
+		void game_object::create_position_vector()
+		{
+		}
+
+		void game_object::move_object(Engine::math::Vector_4 pMoveVector)
+		{
+			this->get_components()[1]->get_model_matrix()->translate(pMoveVector);
+			this->get_components()[2]->set_position(get_components()[2]->get_position() += pMoveVector);
+
+		}
+
 	}
 }

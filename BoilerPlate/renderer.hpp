@@ -3,41 +3,67 @@
 #ifndef _RENDERER_HPP
 #define _RENDERER_HPP
 
+#include <vector>
+
+#include "components_includes.hpp"
+#include "game_object.hpp"
 #include "shaders_utilities.hpp"
 #include "texture.hpp"
-#include <vector>
+#include "vertex.hpp"
+#include "Vector_4.hpp"
 
 namespace Engine
 {
-	const int MAXIMUM_TEXTURES = 16;
-
-	class renderer
+	namespace utilities
 	{
-	public:
-		renderer();
-		~renderer();
-		void vertex_loader(int, int);
-		//void textures_loader(const char* pTextureFiles[]);
-		void init_render();
-		void render();
-		void toggle_fill_or_line();
-		void objects_generator();
-		void objects_activator();
-		void objects_atrributes_manager();
+		const int MAX_VERTICES = 4;
+		const int MAX_INDICES = 6;
+		const int TEXTURE_INDEX_BLOCK = 0;
+		const int TEXTURE_INDEX_BALL = 1;
+		const int TEXTURE_INDEX_PADDLE = 2;
+		const int TEXTURE_INDEX_SOLID_BLOCK = 3;
+		const int TEXTURE_INDEX_BACKGROUND = 4;
 
-		//Global variables
-		bool fillOrLineDrawing;
+		class renderer
+		{
+		public:
+			//constructors ~ destructor
+			renderer();
+			renderer(int, int);
+			~renderer();
 
-		//Public attributes
-		shaders_utilities mShaderManager;
-		texture mTexture;
+			//functions
+			void vertex_loader();
+			void init_render();
+			void render(Engine::core::game_object);
+			void toggle_fill_or_line();
+			void fill_vertices_info(std::vector<Engine::math::vertex>, std::vector<int>);
+			void objects_generator();
+			void objects_activator();
+			void objects_atrributes_manager();
+			void select_texture(Engine::core::game_object);
+			void mvp_manager(Engine::math::matrix_4);
 
-	private:
-		GLuint mVertexArrayObject; //VAO
-		GLuint mVertexBufferObject; //VBO
-		GLuint mElementsBufferObject; //EBO
-		GLuint mProgramID;
-	};
+			//Global variables
+			bool fillOrLineDrawing;
+
+			//Public attributes
+			shaders_utilities mShaderManager;
+
+		private:
+			//members
+			GLuint mVertexArrayObject; //VAO
+			GLuint mVertexBufferObject; //VBO
+			GLuint mElementsBufferObject; //EBO
+			GLuint mProgramID;
+			Engine::math::vertex mGameObjectVertices[MAX_VERTICES];
+			int mGameObjectIndices[MAX_INDICES];
+			int mFrameHeight;
+			int mFrameWidth;
+			std::vector<texture> mGameObjectTextures;
+			
+		};
+	}
 }
 
 #endif // !_RENDERER_HPP

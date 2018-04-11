@@ -1,12 +1,16 @@
 #include "resource_manager.hpp"
 
-
-
-resource_manager::resource_manager()
+namespace Engine
 {
-}
+	namespace utilities
+	{
+		resource_manager::resource_manager()
+		{
+		}
 
+		resource_manager::~resource_manager()
+		{
+		}
 
-resource_manager::~resource_manager()
-{
+	}
 }

@@ -50,7 +50,30 @@
     <ClCompile Include="sprite.cpp">
       <Filter>Engine\utilities</Filter>
     </ClCompile>
-    <ClCompile Include="ball.cpp" />
+    <ClCompile Include="c_object_vertices.cpp" />
+    <ClCompile Include="c_object_model_matrix.cpp" />
+    <ClCompile Include="ball.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="block.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="c_object_position.cpp" />
+    <ClCompile Include="input_manager.cpp">
+      <Filter>Engine\utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="paddle.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="block_solid.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="game_levels.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="background.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.hpp" />
@@ -111,7 +134,31 @@
     <ClInclude Include="sprite.hpp">
       <Filter>Engine\utilities</Filter>
     </ClInclude>
-    <ClInclude Include="ball.hpp" />
+    <ClInclude Include="c_object_vertices.hpp" />
+    <ClInclude Include="c_object_model_matrix.hpp" />
+    <ClInclude Include="components_includes.hpp" />
+    <ClInclude Include="ball.hpp">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="block.hpp">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="c_object_position.hpp" />
+    <ClInclude Include="input_manager.hpp">
+      <Filter>Engine\utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="paddle.hpp">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="block_solid.hpp">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="game_levels.hpp">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="background.hpp">
+      <Filter>game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Engine">

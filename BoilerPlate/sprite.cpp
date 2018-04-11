@@ -1,13 +1,16 @@
 #include "sprite.hpp"
+
 namespace Engine 
 {
-
-	sprite::sprite()
+	namespace utilities
 	{
-	}
+		sprite::sprite()
+		{
+		}
 
 
-	sprite::~sprite()
-	{
+		sprite::~sprite()
+		{
+		}
 	}
 }
