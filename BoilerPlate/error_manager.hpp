@@ -12,9 +12,11 @@ namespace Engine
 		struct error_manager
 		{
 		public:
+			//constructor ~ destructor
 			error_manager();
 			~error_manager();
 
+			//function
 			int show_errors(std::string, std::string, std::string, std::string);
 		};
 	}

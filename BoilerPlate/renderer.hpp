@@ -26,9 +26,12 @@ namespace Engine
 		class renderer
 		{
 		public:
+			//constructors ~ destructor
 			renderer();
 			renderer(int, int);
 			~renderer();
+
+			//functions
 			void vertex_loader();
 			void init_render();
 			void render(Engine::core::game_object);
@@ -47,6 +50,7 @@ namespace Engine
 			shaders_utilities mShaderManager;
 
 		private:
+			//members
 			GLuint mVertexArrayObject; //VAO
 			GLuint mVertexBufferObject; //VBO
 			GLuint mElementsBufferObject; //EBO

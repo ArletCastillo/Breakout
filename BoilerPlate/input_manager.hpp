@@ -1,26 +1,37 @@
 #pragma once
-class input_manager
+
+#ifndef _INPUT_MANAGER_HPP
+#define _INPUT_MANAGER_HPP
+
+namespace Engine
 {
-public:
-	/*Constructors*/
-	input_manager();
-	~input_manager();
+	namespace utilities
+	{
+		class input_manager
+		{
+		public:
+			//constructor ~ destructor
+			input_manager();
+			~input_manager();
 
 
-	/*Functions*/
-	bool get_key_w();
-	bool get_key_a();
-	bool get_key_d();
+			//functions
+			bool get_key_w();
+			bool get_key_a();
+			bool get_key_d();
 
+			void set_key_w(bool);
+			void set_key_a(bool);
+			void set_key_d(bool);
 
-	void set_key_w(bool);
-	void set_key_a(bool);
-	void set_key_d(bool);
+		private:
+			//members
+			bool mKeyW;
+			bool mKeyA;
+			bool mKeyD;
+		};
+	}
+}
 
-private:
-	/*Members*/
-	bool mKeyW;
-	bool mKeyA;
-	bool mKeyD;
-};
+#endif // !_INPUT_MANAGER_HPP
 

@@ -27,7 +27,7 @@ namespace game
 		void toggle_drawing_mode();
 		void game_input_manager();
 
-		input_manager mInputManager;
+		Engine::utilities::input_manager mInputManager;
 
 	private:
 		//members

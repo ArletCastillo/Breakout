@@ -1,6 +1,7 @@
 #include "paddle.hpp"
 
-namespace game 
+
+namespace game
 {
 	paddle::paddle()
 	{
